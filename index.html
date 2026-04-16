@@ -1,0 +1,1056 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Certificação Engenharia Go-to-Market | SCIENT</title>
+  <meta name="description" content="A nova profissão da área de receita que poucos dominam e toda empresa quer contratar. Certificação de 18 semanas para profissionais B2B." />
+  <link rel="icon" type="image/png" href="favicon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+  <style>
+    :root {
+      --brand-50:  #EFF4FF; --brand-100: #D1E0FF; --brand-200: #B2CCFF;
+      --brand-300: #84ADFF; --brand-400: #528BFF; --brand-500: #2970FF;
+      --brand-600: #155EEF; --brand-700: #004EEB; --brand-800: #0040C1;
+      --gray-25:#FCFCFD; --gray-50:#F9FAFB; --gray-100:#F2F4F7;
+      --gray-200:#E4E7EC; --gray-300:#D0D5DD; --gray-400:#98A2B3;
+      --gray-500:#667085; --gray-600:#475467; --gray-700:#344054;
+      --gray-800:#1D2939; --gray-900:#101828; --gray-950:#0C111D;
+      --success-500:#16B364; --success-600:#099250;
+      --error-500:#F04438;
+      --font:'Inter',-apple-system,'Segoe UI',sans-serif;
+      --container:1280px;
+      --radius-card:16px; --radius-btn:999px;
+      --shadow-card:0 1px 3px rgba(16,24,40,0.1),0 1px 2px rgba(16,24,40,0.06);
+      --shadow-hover:0 4px 8px -2px rgba(16,24,40,0.1),0 2px 4px -2px rgba(16,24,40,0.06);
+      --t:200ms ease;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:var(--font);background:#fff;color:var(--gray-900);overflow-x:hidden;-webkit-font-smoothing:antialiased}
+    img{display:block;max-width:100%}
+    a{color:inherit;text-decoration:none}
+    button{cursor:pointer;font-family:var(--font);border:none;background:none}
+    select{font-family:var(--font)}
+
+    .container{max-width:var(--container);margin:0 auto;padding:0 32px}
+    section{padding:96px 0}
+    section.alt{background:var(--gray-50)}
+    section.dark{background:var(--gray-950)}
+
+    @media(max-width:768px){.container{padding:0 16px}section{padding:56px 0}}
+
+    .display-xl{font-size:clamp(2.5rem,5vw,3.75rem);font-weight:700;line-height:1.1;letter-spacing:-0.02em}
+    .display-lg{font-size:clamp(2rem,4vw,3rem);font-weight:700;line-height:1.15;letter-spacing:-0.02em}
+    .display-sm{font-size:clamp(1.5rem,3vw,1.875rem);font-weight:600;line-height:1.25}
+    .text-xl{font-size:1.25rem;line-height:1.6}
+    .text-lg{font-size:1.125rem;line-height:1.65}
+    .text-md{font-size:1rem;line-height:1.6}
+    .text-sm{font-size:0.875rem;line-height:1.5}
+    .overline{font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase}
+    .accent{color:var(--brand-600)}
+    .muted{color:var(--gray-500)}
+    .body-text{color:var(--gray-600)}
+
+    .section-badge{display:inline-flex;align-items:center;gap:8px;padding:6px 16px;border-radius:999px;border:1px solid var(--brand-200);background:var(--brand-50);font-size:0.75rem;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:var(--brand-700)}
+    .section-badge.dark-badge{border-color:rgba(255,255,255,0.15);background:rgba(255,255,255,0.08);color:var(--brand-300)}
+
+    .btn-primary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius-btn);background:var(--brand-600);color:#fff;font-size:1rem;font-weight:600;box-shadow:0 1px 2px rgba(16,24,40,0.05);transition:background var(--t),transform var(--t);cursor:pointer}
+    .btn-primary:hover{background:var(--brand-700);transform:translateY(-1px)}
+    .btn-secondary{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border-radius:var(--radius-btn);background:transparent;color:var(--gray-700);border:1px solid var(--gray-300);font-size:1rem;font-weight:600;transition:background var(--t);cursor:pointer}
+    .btn-secondary:hover{background:var(--gray-50)}
+
+    .card{background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-card);padding:24px;box-shadow:var(--shadow-card);transition:box-shadow var(--t)}
+    .card:hover{box-shadow:var(--shadow-hover)}
+    .feature-icon{width:48px;height:48px;border-radius:10px;background:var(--brand-50);display:flex;align-items:center;justify-content:center;color:var(--brand-600)}
+
+    .fade-up{opacity:0;transform:translateY(24px);transition:opacity 600ms cubic-bezier(0.16,1,0.3,1),transform 600ms cubic-bezier(0.16,1,0.3,1)}
+    .fade-up.visible{opacity:1;transform:translateY(0)}
+
+    /* ── NAVBAR ── */
+    #navbar{position:sticky;top:0;z-index:50;height:72px;background:transparent;transition:background 300ms ease,box-shadow 300ms ease;border-bottom:1px solid transparent}
+    #navbar.scrolled{background:#fff;border-bottom-color:var(--gray-200);box-shadow:0 1px 3px rgba(16,24,40,0.1)}
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;height:72px}
+    .nav-logo{display:flex;align-items:center}
+    .nav-logo img{height:32px;width:auto;filter:brightness(0);}
+    .nav-links{display:flex;align-items:center;gap:32px}
+    .nav-links a{font-size:0.9375rem;color:var(--gray-600);font-weight:500;transition:color var(--t)}
+    .nav-links a:hover{color:var(--gray-900)}
+    @media(max-width:768px){.nav-links{display:none}}
+
+    /* ── HERO ── */
+    #hero{padding:80px 0 96px;background:#fff}
+    .hero-grid{display:grid;grid-template-columns:55% 1fr;gap:64px;align-items:center}
+    .hero-stats{display:flex;align-items:center;gap:24px;margin-top:40px;flex-wrap:wrap}
+    .hero-stat{display:flex;align-items:center;gap:8px}
+    .hero-stat-dot{width:8px;height:8px;border-radius:50%;background:var(--success-500)}
+
+    .hero-visual{position:relative;height:480px}
+    .hero-dashboard{background:#fff;border:1px solid var(--gray-200);border-radius:16px;box-shadow:0 24px 64px rgba(16,24,40,0.12);padding:20px;overflow:hidden;position:absolute;top:0;right:0;width:100%;max-width:440px}
+    .dash-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+    .dash-title{font-size:0.75rem;font-weight:600;color:var(--gray-500);letter-spacing:0.05em;text-transform:uppercase}
+    .dash-badge{background:var(--success-500);color:#fff;font-size:0.625rem;font-weight:700;padding:2px 8px;border-radius:999px;letter-spacing:0.05em;text-transform:uppercase}
+    .dash-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:16px}
+    .dash-metric{background:var(--gray-50);border-radius:10px;padding:12px}
+    .dash-metric-val{font-size:1.25rem;font-weight:700;color:var(--gray-900)}
+    .dash-metric-val span{font-size:0.75rem;color:var(--success-500);font-weight:600}
+    .dash-metric-label{font-size:0.6875rem;color:var(--gray-500);margin-top:2px}
+    .dash-chart{height:80px;background:var(--gray-50);border-radius:10px;margin-bottom:16px;overflow:hidden;position:relative}
+    .dash-chart-bar{position:absolute;bottom:0;background:var(--brand-100);border-radius:4px 4px 0 0}
+    .dash-chart-bar.active{background:var(--brand-600)}
+    .dash-status{display:flex;align-items:center;justify-content:space-between;padding:10px 12px;background:var(--gray-50);border-radius:8px;margin-bottom:8px}
+    .dash-status-label{font-size:0.75rem;font-weight:500;color:var(--gray-700)}
+    .dash-status-val{font-size:0.75rem;font-weight:700;color:var(--brand-600)}
+
+    .float-card{position:absolute;background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:12px 16px;box-shadow:0 8px 24px rgba(16,24,40,0.12)}
+    .float-card-1{bottom:60px;left:-20px;width:220px;animation:float1 4s ease-in-out infinite}
+    .float-card-2{top:120px;left:-40px;width:200px;animation:float2 5s ease-in-out infinite}
+    .float-label{font-size:0.6875rem;color:var(--gray-500);margin-bottom:4px}
+    .float-val{font-size:0.8125rem;font-weight:600;color:var(--gray-900)}
+    .float-progress{margin-top:6px;height:4px;background:var(--gray-200);border-radius:999px;overflow:hidden}
+    .float-progress-fill{height:100%;border-radius:999px}
+    .float-progress-fill.complete{background:var(--success-500);width:100%}
+    .float-progress-fill.partial{width:80%;background:var(--brand-600);animation:ppulse 2s ease-in-out infinite}
+
+    @keyframes float1{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+    @keyframes float2{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}
+    @keyframes ppulse{0%,100%{opacity:1}50%{opacity:0.7}}
+
+    @media(max-width:1024px){.hero-grid{grid-template-columns:1fr;gap:48px}.hero-visual{height:360px}.hero-dashboard{max-width:100%}.float-card-1,.float-card-2{display:none}}
+    @media(max-width:768px){.hero-visual{height:280px}}
+
+    /* ── TRUST BAR ── */
+    #trust{padding:40px 0;border-top:1px solid var(--gray-200);border-bottom:1px solid var(--gray-200)}
+    .trust-label{text-align:center;font-size:0.8125rem;color:var(--gray-500);margin-bottom:24px;font-weight:500;letter-spacing:0.03em;text-transform:uppercase}
+    .trust-logos{display:flex;align-items:center;justify-content:center;gap:40px;flex-wrap:wrap}
+    .trust-logo{font-size:1rem;font-weight:700;color:var(--gray-400);letter-spacing:-0.01em;transition:color var(--t);cursor:default;display:flex;align-items:center;gap:6px}
+    .trust-logo:hover{color:var(--gray-600)}
+    .trust-logo svg{width:18px;height:18px}
+
+    /* ── TWO COL ── */
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    @media(max-width:1024px){.two-col{grid-template-columns:1fr;gap:48px}}
+    .quote-bar{border-left:3px solid var(--brand-600);padding-left:20px;margin-top:24px}
+
+    /* ── GTM DIAGRAM ── */
+    .gtm-diagram{position:relative;height:380px;display:flex;align-items:center;justify-content:center}
+    .gtm-center-badge{width:100px;height:100px;border-radius:50%;background:var(--brand-600);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:0.625rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;gap:2px;box-shadow:0 0 0 12px var(--brand-100),0 0 0 24px var(--brand-50)}
+    .gtm-center-badge span{font-size:1rem;font-weight:700}
+    .gtm-node{position:absolute;display:flex;flex-direction:column;align-items:center;gap:6px}
+    .gtm-node-icon{width:52px;height:52px;border-radius:12px;border:1px solid var(--gray-200);background:#fff;box-shadow:var(--shadow-card);display:flex;align-items:center;justify-content:center;color:var(--brand-600)}
+    .gtm-node-label{font-size:0.6875rem;font-weight:600;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.06em}
+
+    /* ── QUOTE ── */
+    #quote{padding:80px 0}
+    .quote-wrapper{text-align:center;max-width:800px;margin:0 auto}
+    .quote-marks{font-size:5rem;line-height:0.5;color:var(--brand-500);opacity:0.3;font-family:Georgia,serif;margin-bottom:24px}
+    .quote-text{font-size:clamp(1.25rem,2.5vw,1.5rem);font-weight:500;line-height:1.6;color:#fff}
+    .quote-author{display:flex;align-items:center;justify-content:center;gap:12px;margin-top:32px}
+    .quote-avatar{width:48px;height:48px;border-radius:50%;border:2px solid var(--brand-500);overflow:hidden;background:var(--gray-700)}
+    .quote-avatar img{width:100%;height:100%;object-fit:cover}
+    .quote-name{font-weight:600;color:#fff;font-size:0.9375rem}
+    .quote-role{font-size:0.8125rem;color:var(--gray-400);margin-top:2px}
+
+    /* ── SECTION HEADER ── */
+    .section-header{text-align:center;margin-bottom:56px}
+    .section-header .section-badge{margin-bottom:16px}
+    .section-header h2{margin-bottom:16px}
+
+    /* ── TESTIMONIALS ── */
+    .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .testimonial-card{background:#fff;border:1px solid var(--gray-200);border-radius:20px;padding:32px}
+    .stars{display:flex;gap:3px;margin-bottom:16px;color:#F79009}
+    .testimonial-quote{font-size:1rem;color:var(--gray-600);line-height:1.7;margin-bottom:20px;font-style:italic}
+    .testimonial-tag{display:inline-block;background:var(--brand-50);color:var(--brand-700);font-size:0.75rem;font-weight:600;padding:3px 10px;border-radius:999px;margin-bottom:16px}
+    .testimonial-author{display:flex;align-items:center;gap:10px}
+    .t-avatar{width:40px;height:40px;border-radius:50%;background:var(--brand-600);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;font-size:0.875rem}
+    .t-name{font-weight:600;font-size:0.9375rem;color:var(--gray-900)}
+    .t-role{font-size:0.8125rem;color:var(--gray-500)}
+    @media(max-width:1024px){.testimonials-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.testimonials-grid{grid-template-columns:1fr}}
+
+    /* ── PROFILES ── */
+    .profiles-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:40px}
+    @media(max-width:1024px){.profiles-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:640px){.profiles-grid{grid-template-columns:1fr}}
+    .profile-card{display:flex;align-items:flex-start;gap:14px;padding:20px;background:#fff;border:1px solid var(--gray-200);border-radius:var(--radius-card);box-shadow:var(--shadow-card);transition:box-shadow var(--t)}
+    .profile-card:hover{box-shadow:var(--shadow-hover)}
+    .profile-icon{width:36px;height:36px;border-radius:8px;background:var(--brand-50);display:flex;align-items:center;justify-content:center;color:var(--brand-600);flex-shrink:0}
+    .profile-text{font-size:0.9375rem;color:var(--gray-700);line-height:1.6}
+    .not-for{background:#FFF5F5;border:1px solid #FEE4E2;border-radius:var(--radius-card);padding:24px}
+    .not-for-title{font-weight:600;color:#B42318;margin-bottom:16px;font-size:0.875rem;text-transform:uppercase;letter-spacing:0.06em}
+    .not-for-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:12px}
+    .not-for-x{color:var(--error-500);flex-shrink:0;margin-top:2px}
+    .not-for-text{font-size:0.9375rem;color:var(--gray-700)}
+
+    /* ── COMPARE ── */
+    .compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    @media(max-width:768px){.compare-grid{grid-template-columns:1fr}}
+    .compare-card{border-radius:20px;padding:32px;border:1px solid}
+    .compare-before{background:var(--gray-50);border-color:var(--gray-200)}
+    .compare-after{background:var(--brand-50);border-color:var(--brand-200)}
+    .compare-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
+    .compare-label{font-size:0.75rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase}
+    .compare-label.before{color:var(--gray-500)}
+    .compare-label.after{color:var(--brand-700)}
+    .compare-badge{font-size:0.6875rem;font-weight:700;padding:3px 10px;border-radius:999px;letter-spacing:0.06em;text-transform:uppercase;background:var(--brand-600);color:#fff}
+    .compare-item{display:flex;align-items:flex-start;gap:10px;margin-bottom:14px}
+    .compare-text{font-size:0.9375rem;color:var(--gray-700);line-height:1.5}
+
+    /* ── MODULES ── */
+    .modules-stack{display:flex;flex-direction:column;gap:20px}
+    .module-card{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.10);border-radius:20px;padding:28px 32px;backdrop-filter:blur(8px);transition:background var(--t)}
+    .module-card:hover{background:rgba(255,255,255,0.08)}
+    .module-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+    .module-badge{display:inline-flex;align-items:center;padding:4px 12px;border-radius:999px;font-size:0.6875rem;font-weight:700;letter-spacing:0.06em;text-transform:uppercase}
+    .mod-1{background:rgba(41,112,255,0.2);color:#84ADFF}
+    .mod-2{background:rgba(22,179,100,0.2);color:#6CE9A6}
+    .mod-3{background:rgba(127,86,217,0.2);color:#D6BBFB}
+    .mod-bonus{background:rgba(247,144,9,0.2);color:#FEC84B}
+    .module-title{font-size:1.25rem;font-weight:600;color:#fff;margin-top:12px;margin-bottom:8px}
+    .module-desc{color:var(--gray-300);line-height:1.65;font-size:0.9375rem}
+    .module-meta{display:flex;align-items:center;gap:20px;margin-top:16px;flex-wrap:wrap}
+    .module-meta-item{display:flex;align-items:center;gap:6px;font-size:0.8125rem;color:var(--gray-400)}
+    .bonuses-label{font-size:0.75rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-500);margin-bottom:20px;margin-top:48px;display:flex;align-items:center;gap:12px}
+    .bonuses-label::after{content:'';flex:1;height:1px;background:rgba(255,255,255,0.08)}
+
+    /* ── INSTRUCTORS ── */
+    .instructors-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+    @media(max-width:1024px){.instructors-grid{grid-template-columns:repeat(3,1fr)}}
+    @media(max-width:768px){.instructors-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:480px){.instructors-grid{grid-template-columns:1fr}}
+    .instructor-card{text-align:center}
+    .instructor-photo{width:88px;height:88px;border-radius:50%;object-fit:cover;margin:0 auto 12px;border:2px solid var(--gray-200);background:var(--gray-100)}
+    .instructor-photo-placeholder{width:88px;height:88px;border-radius:50%;margin:0 auto 12px;background:var(--brand-600);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.5rem;font-weight:700}
+    .instructor-name{font-weight:600;font-size:0.9375rem;color:var(--gray-900)}
+    .instructor-role{font-size:0.8125rem;color:var(--gray-500);margin-top:4px;line-height:1.4}
+
+    /* ── GUARANTEE ── */
+    .guarantee-card{max-width:600px;margin:0 auto;text-align:center;padding:48px 40px;background:#fff;border:2px solid var(--success-500);border-radius:24px;box-shadow:0 8px 32px rgba(22,179,100,0.1)}
+
+    /* ── PRICING ── */
+    #pricing{background:var(--gray-50);padding:96px 0}
+    .pricing-card{max-width:560px;margin:0 auto;background:#fff;border:2px solid var(--brand-200);border-radius:24px;padding:48px;box-shadow:0 8px 48px rgba(21,94,239,0.12)}
+    .pricing-popular{display:inline-block;background:var(--brand-600);color:#fff;font-size:0.75rem;font-weight:700;padding:4px 14px;border-radius:999px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:20px}
+    .pricing-price{font-size:clamp(2.5rem,5vw,3.5rem);font-weight:700;color:var(--gray-900);letter-spacing:-0.02em;line-height:1}
+    .pricing-price sup{font-size:1.25rem;font-weight:600;vertical-align:super}
+    .pricing-installment{font-size:1rem;color:var(--gray-500);margin-top:6px}
+    .pricing-features{list-style:none;margin:32px 0;display:flex;flex-direction:column;gap:12px}
+    .pricing-features li{display:flex;align-items:flex-start;gap:10px;font-size:0.9375rem;color:var(--gray-700)}
+    .pricing-features li svg{color:var(--success-500);flex-shrink:0;margin-top:2px}
+    .pricing-btns{display:flex;flex-direction:column;gap:12px;margin-top:32px}
+    .pricing-btns .btn-primary{width:100%;justify-content:center;font-size:1.0625rem;padding:16px}
+    .pricing-btns .btn-secondary{width:100%;justify-content:center;font-size:1.0625rem;padding:16px}
+    .pricing-guarantee{display:flex;align-items:center;justify-content:center;gap:20px;margin-top:16px;flex-wrap:wrap}
+    .pricing-guarantee span{display:flex;align-items:center;gap:6px;font-size:0.8125rem;color:var(--gray-500)}
+
+    /* ── FORM SECTION ── */
+    #form-section{padding:96px 0}
+    .steps-list{display:flex;flex-direction:column;gap:16px;margin-top:32px}
+    .step-item{display:flex;align-items:flex-start;gap:14px}
+    .step-num{width:32px;height:32px;border-radius:50%;background:var(--brand-600);color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.875rem;font-weight:700;flex-shrink:0}
+    .step-text{font-size:0.9375rem;color:var(--gray-300);line-height:1.6;padding-top:4px}
+
+    .form-card{background:#fff;border-radius:20px;padding:36px;box-shadow:0 24px 64px rgba(0,0,0,0.3)}
+    .form-title{font-size:1.25rem;font-weight:700;color:var(--gray-900);margin-bottom:24px}
+    .form-group{margin-bottom:18px}
+    .form-label{display:block;font-size:0.875rem;font-weight:500;color:var(--gray-700);margin-bottom:6px}
+    .form-input,.form-select{width:100%;padding:12px 16px;border:1px solid var(--gray-300);border-radius:10px;font-size:0.9375rem;font-family:var(--font);color:var(--gray-900);outline:none;transition:border-color var(--t),box-shadow var(--t);background:#fff;appearance:none;-webkit-appearance:none}
+    .form-input:focus,.form-select:focus{border-color:var(--brand-500);box-shadow:0 0 0 4px rgba(41,112,255,0.1)}
+    .form-input::placeholder{color:var(--gray-400)}
+    .form-select-wrap{position:relative}
+    .form-select-wrap::after{content:'';position:absolute;right:14px;top:50%;transform:translateY(-50%);width:0;height:0;border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid var(--gray-500);pointer-events:none}
+    .form-submit{width:100%;padding:16px;background:var(--brand-600);color:#fff;border-radius:var(--radius-btn);font-size:1rem;font-weight:600;cursor:pointer;transition:background var(--t);margin-top:8px;border:none;font-family:var(--font)}
+    .form-submit:hover{background:var(--brand-700)}
+    .form-submit:disabled{opacity:0.6;cursor:not-allowed}
+    .form-disclaimer{font-size:0.8125rem;color:var(--gray-400);text-align:center;margin-top:16px;line-height:1.5}
+
+    /* ── POPUP / MODAL ── */
+    .modal-overlay{position:fixed;inset:0;background:rgba(16,24,40,0.75);z-index:200;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;pointer-events:none;transition:opacity 250ms ease;backdrop-filter:blur(4px)}
+    .modal-overlay.active{opacity:1;pointer-events:all}
+    .modal-box{background:#fff;border-radius:24px;padding:40px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;transform:translateY(16px) scale(0.98);transition:transform 300ms cubic-bezier(0.16,1,0.3,1);box-shadow:0 24px 80px rgba(16,24,40,0.25)}
+    .modal-overlay.active .modal-box{transform:translateY(0) scale(1)}
+    .modal-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:24px;gap:16px}
+    .modal-title{font-size:1.25rem;font-weight:700;color:var(--gray-900)}
+    .modal-subtitle{font-size:0.875rem;color:var(--gray-500);margin-top:4px}
+    .modal-close{width:32px;height:32px;border-radius:8px;background:var(--gray-100);display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;transition:background var(--t);border:none;color:var(--gray-500)}
+    .modal-close:hover{background:var(--gray-200)}
+    .modal-success{text-align:center;padding:20px 0}
+    .modal-success-icon{color:var(--success-600);margin:0 auto 16px}
+    .modal-success h3{font-size:1.25rem;font-weight:700;color:var(--gray-900);margin-bottom:8px}
+    .modal-success p{color:var(--gray-600);font-size:0.9375rem;line-height:1.6}
+
+    /* ── FAQ ── */
+    #faq .two-col{align-items:flex-start}
+    .faq-sticky{position:sticky;top:100px}
+    .accordion{border-top:1px solid var(--gray-200)}
+    .accordion-item{border-bottom:1px solid var(--gray-200)}
+    .accordion-question{width:100%;display:flex;align-items:center;justify-content:space-between;padding:20px 0;font-size:1rem;font-weight:500;color:var(--gray-900);cursor:pointer;text-align:left;gap:16px;background:none;border:none;font-family:var(--font)}
+    .accordion-question:hover{color:var(--brand-600)}
+    .accordion-chevron{color:var(--brand-600);flex-shrink:0;transition:transform 200ms ease}
+    .accordion-item.open .accordion-chevron{transform:rotate(180deg)}
+    .accordion-answer{max-height:0;overflow:hidden;transition:max-height 300ms ease}
+    .accordion-answer-inner{padding-bottom:20px;color:var(--gray-600);line-height:1.7;font-size:0.9375rem}
+
+    /* ── CTA FINAL ── */
+    #cta-final{padding:80px 0}
+    .cta-final-inner{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+    .cta-final-text h2{color:#fff;margin-bottom:12px}
+    .cta-final-text p{color:var(--gray-400);font-size:1rem}
+
+    /* ── FOOTER ── */
+    #footer{background:var(--gray-950);border-top:1px solid rgba(255,255,255,0.08);padding:48px 0 24px}
+    .footer-divider{height:1px;background:rgba(255,255,255,0.08);margin-bottom:24px}
+    .footer-copy{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+    .footer-copy span{font-size:0.875rem;color:var(--gray-500)}
+
+    /* ── SCROLL PROGRESS ── */
+    #scroll-progress{position:fixed;top:0;left:0;height:2px;background:var(--brand-600);z-index:100;transition:width 100ms linear;width:0}
+  </style>
+</head>
+<body>
+
+<div id="scroll-progress"></div>
+
+<!-- ══ MODAL POPUP ══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <div class="modal-header">
+      <div>
+        <div class="modal-title" id="modal-title">Garantir minha vaga</div>
+        <div class="modal-subtitle" id="modal-subtitle">Preencha seus dados e te direcionamos para o próximo passo.</div>
+      </div>
+      <button class="modal-close" onclick="closeModal()" aria-label="Fechar">
+        <i data-lucide="x" style="width:16px;height:16px;"></i>
+      </button>
+    </div>
+
+    <div id="modal-form-wrap">
+      <form id="modal-form" onsubmit="handleModalSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="f-nome">Nome completo *</label>
+          <input class="form-input" type="text" id="f-nome" required placeholder="Seu nome completo" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-email">E-mail profissional *</label>
+          <input class="form-input" type="email" id="f-email" required placeholder="seu@email.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-tel">WhatsApp / Telefone *</label>
+          <input class="form-input" type="tel" id="f-tel" required placeholder="(11) 99999-9999" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-cargo">Cargo atual *</label>
+          <div class="form-select-wrap">
+            <select class="form-select" id="f-cargo" required>
+              <option value="" disabled selected>Selecione seu cargo</option>
+              <option>RevOps / Revenue Operations</option>
+              <option>Sales Ops / Operações de Vendas</option>
+              <option>Head of Sales / Gerente de Vendas</option>
+              <option>Marketing Ops</option>
+              <option>CS / Customer Success</option>
+              <option>Growth / Crescimento</option>
+              <option>Fundador / CEO / C-Level</option>
+              <option>Analista / Coordenador</option>
+              <option>Outro</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-para-quem">A formação é para… *</label>
+          <div class="form-select-wrap">
+            <select class="form-select" id="f-para-quem" required>
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option value="mim">Para mim (investimento pessoal)</option>
+              <option value="time">Para o meu time / empresa</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="form-submit" id="modal-submit-btn">Continuar →</button>
+        <p class="form-disclaimer">🔒 Seus dados estão protegidos pela LGPD. Não compartilhamos com terceiros.</p>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NAVBAR ══════════════════════════════════════════════ -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <img src="logo.png" alt="SCIENT" />
+      </a>
+      <div class="nav-links">
+        <a href="#gtm-engineer">O que é GTM</a>
+        <a href="#modulos">Módulos</a>
+        <a href="#instrutores">Instrutores</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <button class="btn-primary" onclick="openModal('lead')" style="padding:10px 22px;font-size:0.9375rem;">
+        Garantir minha vaga
+        <i data-lucide="arrow-right" style="width:16px;height:16px;"></i>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ══ HERO ════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="fade-up">
+        <div style="margin-bottom:24px"><span class="section-badge">Certificação Engenharia Go-to-Market</span></div>
+        <h1 class="display-xl" style="color:var(--gray-900);max-width:600px;margin-bottom:20px">
+          A nova profissão da área de receita que poucos dominam e toda empresa quer <span class="accent">contratar.</span>
+        </h1>
+        <p class="text-xl" style="color:var(--gray-500);max-width:520px;margin-bottom:32px">
+          Torne-se um dos profissionais mais bem pagos da área de receita com a nova profissão que está dominando o Vale do Silício.
+        </p>
+        <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+          <button class="btn-primary" onclick="openModal('comprar')">
+            Garantir minha vaga
+            <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+          </button>
+          <button class="btn-secondary" onclick="openModal('lead')">
+            Inscrever meu time
+          </button>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="hero-stat-dot"></div>
+            <strong style="font-size:0.875rem;color:var(--gray-700)">+500 empresas</strong>
+            <span style="font-size:0.875rem;color:var(--gray-500)">já formaram seus Engenheiros GTM</span>
+          </div>
+          <div class="hero-stat" style="color:var(--gray-400);font-size:0.875rem;">
+            <i data-lucide="shield-check" style="width:14px;height:14px;color:var(--success-500)"></i>
+            <span style="font-size:0.875rem;color:var(--gray-500)">Garantia incondicional de 7 dias</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero-visual fade-up" style="transition-delay:150ms">
+        <div class="float-card float-card-2">
+          <div class="float-label">Automação de GTM diária</div>
+          <div class="float-val">Implementando...</div>
+          <div class="float-progress"><div class="float-progress-fill partial"></div></div>
+          <div style="font-size:0.625rem;color:var(--brand-600);font-weight:600;margin-top:6px;">80% Completo</div>
+        </div>
+        <div class="hero-dashboard">
+          <div class="dash-header">
+            <div class="dash-title">Revenue Intelligence</div>
+            <div class="dash-badge">● Running</div>
+          </div>
+          <div class="dash-metrics">
+            <div class="dash-metric"><div class="dash-metric-val">+247% <span>↑</span></div><div class="dash-metric-label">Receita Incremental</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">3.2x</div><div class="dash-metric-label">Velocidade Pipeline</div></div>
+            <div class="dash-metric"><div class="dash-metric-val">94.7%</div><div class="dash-metric-label">Forecast Accuracy</div></div>
+          </div>
+          <div class="dash-chart">
+            <div class="dash-chart-bar" style="left:8px;width:28px;height:40%"></div>
+            <div class="dash-chart-bar" style="left:44px;width:28px;height:55%"></div>
+            <div class="dash-chart-bar" style="left:80px;width:28px;height:45%"></div>
+            <div class="dash-chart-bar" style="left:116px;width:28px;height:65%"></div>
+            <div class="dash-chart-bar" style="left:152px;width:28px;height:50%"></div>
+            <div class="dash-chart-bar active" style="left:188px;width:28px;height:80%"></div>
+            <div class="dash-chart-bar active" style="left:224px;width:28px;height:90%"></div>
+            <div class="dash-chart-bar active" style="left:260px;width:28px;height:100%"></div>
+          </div>
+          <div class="dash-status"><div class="dash-status-label">Ciclo de Venda</div><div class="dash-status-val">-38 dias</div></div>
+          <div class="dash-status"><div class="dash-status-label">GTM Flywheel ativo</div><div class="dash-status-val">Running ●</div></div>
+          <div class="dash-status"><div class="dash-status-label">Win Rate Médio</div><div class="dash-status-val" style="color:var(--success-500)">+61%</div></div>
+        </div>
+        <div class="float-card float-card-1">
+          <div class="float-label">Novo processo de GTM 2026.pdf</div>
+          <div class="float-val" style="color:var(--success-500)">✓ Completo</div>
+          <div class="float-progress"><div class="float-progress-fill complete"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRUST BAR ═══════════════════════════════════════════ -->
+<section id="trust">
+  <div class="container">
+    <p class="trust-label">Junte-se a +500 empresas no mundo que formam e contratam GTM Engineers</p>
+    <div class="trust-logos">
+      <div class="trust-logo"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8z"/></svg>Stripe</div>
+      <div class="trust-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>Clay</div>
+      <div class="trust-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>Cursor</div>
+      <div class="trust-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h7"/></svg>Webflow</div>
+      <div class="trust-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg>Lovable</div>
+      <div class="trust-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>HubSpot</div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ O QUE É GTM ENGINEER ════════════════════════════════ -->
+<section id="gtm-engineer" class="alt">
+  <div class="container">
+    <div class="two-col">
+      <div class="fade-up">
+        <div style="margin-bottom:16px"><span class="section-badge">O Novo Profissional da Área de Receita</span></div>
+        <h2 class="display-lg" style="margin-bottom:20px">O que é um Engenheiro(a) <span class="accent">Go-to-Market?</span></h2>
+        <p class="text-lg" style="color:var(--gray-700);font-weight:500;margin-bottom:12px">Não é um RevOps sênior. Não é analista de dados. Não é SDR avançado.</p>
+        <p class="text-md body-text" style="margin-bottom:24px">É o profissional que une visão de receita e profundidade técnica para construir o que a maioria das empresas ainda não sabe criar: um sistema de receita automatizado, escalável e conectado a dados em tempo real.</p>
+        <div class="quote-bar">
+          <p class="text-md" style="color:var(--gray-700)">Toda empresa B2B madura precisa dos dois. O problema é que o mercado ainda não formou Engenheiros Go-to-Market em escala. <strong>Até agora.</strong></p>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px">
+          <div style="display:flex;align-items:center;gap:10px;padding:14px;background:#fff;border:1px solid var(--gray-200);border-radius:12px"><div class="feature-icon" style="width:36px;height:36px;flex-shrink:0"><i data-lucide="trending-up" style="width:18px;height:18px;"></i></div><span style="font-size:0.875rem;font-weight:500;color:var(--gray-700)">Revenue Operations</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:14px;background:#fff;border:1px solid var(--gray-200);border-radius:12px"><div class="feature-icon" style="width:36px;height:36px;flex-shrink:0"><i data-lucide="zap" style="width:18px;height:18px;"></i></div><span style="font-size:0.875rem;font-weight:500;color:var(--gray-700)">Automação com IA</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:14px;background:#fff;border:1px solid var(--gray-200);border-radius:12px"><div class="feature-icon" style="width:36px;height:36px;flex-shrink:0"><i data-lucide="database" style="width:18px;height:18px;"></i></div><span style="font-size:0.875rem;font-weight:500;color:var(--gray-700)">Dados em Tempo Real</span></div>
+          <div style="display:flex;align-items:center;gap:10px;padding:14px;background:#fff;border:1px solid var(--gray-200);border-radius:12px"><div class="feature-icon" style="width:36px;height:36px;flex-shrink:0"><i data-lucide="git-merge" style="width:18px;height:18px;"></i></div><span style="font-size:0.875rem;font-weight:500;color:var(--gray-700)">Stack Integrada</span></div>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:150ms">
+        <div class="gtm-diagram">
+          <div style="position:absolute;z-index:2;text-align:center"><div class="gtm-center-badge"><span>GTM</span>ENGINEER</div></div>
+          <div class="gtm-node" style="top:20px;left:50%;transform:translateX(-50%)"><div class="gtm-node-icon"><i data-lucide="bar-chart-2" style="width:22px;height:22px;"></i></div><div class="gtm-node-label">RevOps</div></div>
+          <div class="gtm-node" style="top:50%;right:20px;transform:translateY(-50%)"><div class="gtm-node-icon"><i data-lucide="megaphone" style="width:22px;height:22px;"></i></div><div class="gtm-node-label">Marketing</div></div>
+          <div class="gtm-node" style="bottom:20px;left:50%;transform:translateX(-50%)"><div class="gtm-node-icon"><i data-lucide="users" style="width:22px;height:22px;"></i></div><div class="gtm-node-label">Customer Success</div></div>
+          <div class="gtm-node" style="top:50%;left:20px;transform:translateY(-50%)"><div class="gtm-node-icon"><i data-lucide="target" style="width:22px;height:22px;"></i></div><div class="gtm-node-label">Sales</div></div>
+          <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" xmlns="http://www.w3.org/2000/svg">
+            <line x1="50%" y1="15%" x2="50%" y2="42%" stroke="var(--brand-200)" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <line x1="85%" y1="50%" x2="58%" y2="50%" stroke="var(--brand-200)" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <line x1="50%" y1="85%" x2="50%" y2="58%" stroke="var(--brand-200)" stroke-width="1.5" stroke-dasharray="4 4"/>
+            <line x1="15%" y1="50%" x2="42%" y2="50%" stroke="var(--brand-200)" stroke-width="1.5" stroke-dasharray="4 4"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ QUOTE ════════════════════════════════════════════════ -->
+<section id="quote" class="dark">
+  <div class="container">
+    <div class="quote-wrapper fade-up">
+      <div class="overline" style="color:var(--gray-400);letter-spacing:0.12em;margin-bottom:32px;">Visão do GTM Engineer</div>
+      <div class="quote-marks">"</div>
+      <p class="quote-text">GTM Engineer constrói os sistemas que transformam sinais de intenção de compra em receita. Conectam ferramentas de marketing, vendas e customer success, automatizam tarefas repetitivas e utiliza IA para conduzir times a absorverem ganhos massivos de produtividade</p>
+      <div class="quote-author">
+        <div class="quote-avatar"><img src="giovanni salvador.avif" alt="Giovanni Salvador" /></div>
+        <div><div class="quote-name">Giovanni Salvador</div><div class="quote-role">Fundador & CEO, Scient</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ DEPOIMENTOS ══════════════════════════════════════════ -->
+<section id="depoimentos">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-badge">Depoimentos Reais</span>
+      <h2 class="display-lg" style="margin-top:16px">O que dizem os profissionais que já passaram pela <span class="accent">certificação</span></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-up"><div class="stars">★★★★★</div><p class="testimonial-quote">"Em 8 semanas depois do programa, reestruturei toda a operação de vendas. O ciclo de venda caiu de 45 para 22 dias e o forecast ficou com 91% de acurácia no primeiro trimestre. O ROI foi imediato."</p><div class="testimonial-tag">Ciclo de venda -51%</div><div class="testimonial-author"><div class="t-avatar">LF</div><div><div class="t-name">Lucas Faria</div><div class="t-role">Head of Sales · Fintech B2B</div></div></div></div>
+      <div class="testimonial-card fade-up" style="transition-delay:100ms"><div class="stars">★★★★★</div><p class="testimonial-quote">"Finalmente entendi como conectar marketing, vendas e CS de verdade. O framework de jornada do cliente que implementamos eliminou completamente o problema de handoff. O time está alinhado e os clientes percebem a diferença."</p><div class="testimonial-tag">Handoffs resolvidos</div><div class="testimonial-author"><div class="t-avatar" style="background:var(--brand-700)">AB</div><div><div class="t-name">Ana Beatriz Costa</div><div class="t-role">Revenue Operations Manager · SaaS de RH</div></div></div></div>
+      <div class="testimonial-card fade-up" style="transition-delay:200ms"><div class="stars">★★★★★</div><p class="testimonial-quote">"Construí minha primeira operação GTM estruturada do zero. Em 3 meses, saí de crescimento imprevisível para um modelo com forecast confiável e pipeline saudável. Levantamos uma rodada Série A com esses números."</p><div class="testimonial-tag">Série A fechada</div><div class="testimonial-author"><div class="t-avatar" style="background:var(--success-500)">MV</div><div><div class="t-name">Marcos Vinícius</div><div class="t-role">Fundador & CEO · Startup B2B</div></div></div></div>
+      <div class="testimonial-card fade-up" style="transition-delay:100ms"><div class="stars">★★★★★</div><p class="testimonial-quote">"Os agentes de IA que aprendi a construir transformaram completamente nossa prospecção. Hoje rodamos 3x mais outreach com a mesma equipe. O módulo de Product Engineering é simplesmente um nível acima do que existe no mercado."</p><div class="testimonial-tag">3x mais outreach</div><div class="testimonial-author"><div class="t-avatar" style="background:#7F56D9">PA</div><div><div class="t-name">Patricia Almeida</div><div class="t-role">GTM Engineer · Scale-up de EdTech</div></div></div></div>
+      <div class="testimonial-card fade-up" style="transition-delay:200ms"><div class="stars">★★★★★</div><p class="testimonial-quote">"Investi no programa achando que era mais um curso de vendas. Errei feio. É engenharia de receita de verdade. O framework de Revenue Intelligence que montamos hoje orienta todas as decisões de go-to-market da empresa."</p><div class="testimonial-tag">Decisões data-driven</div><div class="testimonial-author"><div class="t-avatar" style="background:#F04438">RC</div><div><div class="t-name">Roberto Carvalho</div><div class="t-role">Sales Director LATAM · Software de ERP</div></div></div></div>
+      <div class="testimonial-card fade-up" style="transition-delay:300ms"><div class="stars">★★★★★</div><p class="testimonial-quote">"Como CRO, precisava de uma metodologia que escalasse. O programa entregou exatamente isso: um sistema reproduzível que qualquer membro do time pode operar. Reduzimos a dependência de heróis e aumentamos a previsibilidade em 2x."</p><div class="testimonial-tag">Previsibilidade 2x</div><div class="testimonial-author"><div class="t-avatar" style="background:#12B76A">FL</div><div><div class="t-name">Fernanda Lima</div><div class="t-role">Chief Revenue Officer · Healthtech B2B</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PARA QUEM É ═══════════════════════════════════════════ -->
+<section id="para-quem" class="alt">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-badge">Perfis</span>
+      <h2 class="display-lg" style="margin-top:16px">Esta certificação é para <span class="accent">você</span> se…</h2>
+    </div>
+    <div class="profiles-grid">
+      <div class="profile-card fade-up"><div class="profile-icon"><i data-lucide="check" style="width:18px;height:18px;"></i></div><p class="profile-text">Trabalha com vendas, marketing, CS ou operações e quer sair da execução manual para construir sistemas.</p></div>
+      <div class="profile-card fade-up" style="transition-delay:100ms"><div class="profile-icon"><i data-lucide="check" style="width:18px;height:18px;"></i></div><p class="profile-text">Atua como RevOps, Sales Ops ou analista de operações e quer evoluir para um papel mais estratégico e técnico.</p></div>
+      <div class="profile-card fade-up" style="transition-delay:200ms"><div class="profile-icon"><i data-lucide="check" style="width:18px;height:18px;"></i></div><p class="profile-text">Sente que o mercado está mudando rápido e quer se posicionar na função que mais cresce na área de receita.</p></div>
+      <div class="profile-card fade-up" style="transition-delay:100ms"><div class="profile-icon"><i data-lucide="check" style="width:18px;height:18px;"></i></div><p class="profile-text">Quer aprender a usar IA de verdade no dia a dia, não só acompanhar trend nas redes sociais.</p></div>
+      <div class="profile-card fade-up" style="transition-delay:200ms"><div class="profile-icon"><i data-lucide="check" style="width:18px;height:18px;"></i></div><p class="profile-text">Está buscando uma transição de carreira para uma área com alta demanda e poucos profissionais qualificados.</p></div>
+      <div class="profile-card fade-up" style="transition-delay:300ms"><div class="profile-icon"><i data-lucide="check" style="width:18px;height:18px;"></i></div><p class="profile-text">Quer construir um portfólio de projetos e se diferenciar de 99% dos profissionais da área.</p></div>
+    </div>
+    <div class="not-for fade-up">
+      <div class="not-for-title">Não é para</div>
+      <div class="not-for-item"><div class="not-for-x"><i data-lucide="x" style="width:16px;height:16px;"></i></div><p class="not-for-text">Quem busca curso rápido ou certificado de gaveta, sem compromisso com implementação</p></div>
+      <div class="not-for-item"><div class="not-for-x"><i data-lucide="x" style="width:16px;height:16px;"></i></div><p class="not-for-text">Quem ainda não tem experiência nenhuma na área de receita (vendas, marketing, CS ou operações)</p></div>
+    </div>
+    <div style="text-align:center;margin-top:40px" class="fade-up">
+      <button class="btn-primary" onclick="openModal('comprar')">Garantir minha vaga <i data-lucide="arrow-right" style="width:18px;height:18px;"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ TRANSFORMAÇÃO ════════════════════════════════════════ -->
+<section id="transformacao">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-badge">Com a Certificação</span>
+      <h2 class="display-lg" style="margin-top:16px">A sua carreira passa <span class="accent">de… para…</span></h2>
+      <p class="text-xl muted" style="margin-top:12px;max-width:560px;margin-left:auto;margin-right:auto">De mais um profissional operacional para o perfil que toda empresa B2B está procurando.</p>
+    </div>
+    <div class="compare-grid">
+      <div class="compare-card compare-before fade-up">
+        <div class="compare-header"><span class="compare-label before">Perfil Atual</span></div>
+        <div class="compare-item"><div><i data-lucide="x" style="width:16px;height:16px;color:var(--error-500)"></i></div><p class="compare-text">Execução manual de tarefas repetitivas sem escalabilidade</p></div>
+        <div class="compare-item"><div><i data-lucide="x" style="width:16px;height:16px;color:var(--error-500)"></i></div><p class="compare-text">Dados isolados em silos — marketing não fala com vendas</p></div>
+        <div class="compare-item"><div><i data-lucide="x" style="width:16px;height:16px;color:var(--error-500)"></i></div><p class="compare-text">Papel operacional sem influência estratégica</p></div>
+        <div class="compare-item"><div><i data-lucide="x" style="width:16px;height:16px;color:var(--error-500)"></i></div><p class="compare-text">Forecast baseado em achismo e intuição</p></div>
+        <div class="compare-item"><div><i data-lucide="x" style="width:16px;height:16px;color:var(--error-500)"></i></div><p class="compare-text">Ferramentas de IA usadas superficialmente</p></div>
+        <div class="compare-item"><div><i data-lucide="x" style="width:16px;height:16px;color:var(--error-500)"></i></div><p class="compare-text">Crescimento de carreira dependente de politics internas</p></div>
+      </div>
+      <div class="compare-card compare-after fade-up" style="transition-delay:150ms">
+        <div class="compare-header"><span class="compare-label after">GTM Engineer</span><span class="compare-badge">GTM ENGINEER</span></div>
+        <div class="compare-item"><div><i data-lucide="check" style="width:16px;height:16px;color:var(--success-500)"></i></div><p class="compare-text">Sistemas automatizados que funcionam enquanto você dorme</p></div>
+        <div class="compare-item"><div><i data-lucide="check" style="width:16px;height:16px;color:var(--success-500)"></i></div><p class="compare-text">Stack conectada com dados fluindo em tempo real</p></div>
+        <div class="compare-item"><div><i data-lucide="check" style="width:16px;height:16px;color:var(--success-500)"></i></div><p class="compare-text">Papel estratégico com impacto direto na receita</p></div>
+        <div class="compare-item"><div><i data-lucide="check" style="width:16px;height:16px;color:var(--success-500)"></i></div><p class="compare-text">Revenue Intelligence com 94%+ de acurácia de forecast</p></div>
+        <div class="compare-item"><div><i data-lucide="check" style="width:16px;height:16px;color:var(--success-500)"></i></div><p class="compare-text">Agentes de IA construídos e operados no dia a dia</p></div>
+        <div class="compare-item"><div><i data-lucide="check" style="width:16px;height:16px;color:var(--success-500)"></i></div><p class="compare-text">Alta empregabilidade na função mais disputada do mercado B2B</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ MÓDULOS ══════════════════════════════════════════════ -->
+<section id="modulos" class="dark">
+  <div class="container">
+    <div class="section-header fade-up" style="margin-bottom:64px">
+      <div class="overline" style="color:var(--gray-400);margin-bottom:16px;">Programação da Formação</div>
+      <h2 class="display-lg" style="color:#fff">O que você vai <span style="color:var(--brand-400)">dominar.</span></h2>
+      <p class="text-xl" style="color:var(--gray-300);margin-top:16px;max-width:600px;margin-left:auto;margin-right:auto">Uma formação completa com tudo que grandes empresas B2B do Vale do Silício estão usando na área de receita.</p>
+    </div>
+    <div class="modules-stack">
+      <div class="module-card fade-up">
+        <div class="module-top"><span class="module-badge mod-1">● Módulo 1</span></div>
+        <h3 class="module-title">Formação Completa em Business Development</h3>
+        <p class="module-desc">Conectar processos de GTM. Acompanhe o que funciona e dimensione corretamente os times de marketing, vendas e expansão. Agentes de Produção de Conteúdo, Sistema TRM, BDRs & SDRs potencializados por IA, Arquitetura de Ecossistema de Parceiros.</p>
+        <div class="module-meta"><div class="module-meta-item"><i data-lucide="clock" style="width:14px;height:14px;"></i> 6 semanas</div><div class="module-meta-item"><i data-lucide="gift" style="width:14px;height:14px;"></i> Bônus: 12 Scripts de Vendas testados</div><div class="module-meta-item" style="color:var(--brand-400);font-weight:600"><i data-lucide="tag" style="width:14px;height:14px;"></i> Avaliado em R$3.997</div></div>
+      </div>
+      <div class="module-card fade-up" style="transition-delay:100ms">
+        <div class="module-top"><span class="module-badge mod-2">● Módulo 2</span></div>
+        <h3 class="module-title">Formação Completa em Revenue Operations</h3>
+        <p class="module-desc">Desenvolver e otimizar sistemas que identificam, educam e expandem sua base de clientes com processos escaláveis, potencializados por IA. RevOps IA Native, Inteligência de Dados de Receita, Engenharia de Jornada do Cliente, Design de Operação de Receita.</p>
+        <div class="module-meta"><div class="module-meta-item"><i data-lucide="clock" style="width:14px;height:14px;"></i> 6 semanas</div><div class="module-meta-item"><i data-lucide="gift" style="width:14px;height:14px;"></i> Bônus: Planilha Premium de Forecasting</div><div class="module-meta-item" style="color:var(--brand-400);font-weight:600"><i data-lucide="tag" style="width:14px;height:14px;"></i> Avaliado em R$4.297</div></div>
+      </div>
+      <div class="module-card fade-up" style="transition-delay:200ms">
+        <div class="module-top"><span class="module-badge mod-3">● Módulo 3</span></div>
+        <h3 class="module-title">Formação Completa em Product Engineering</h3>
+        <p class="module-desc">Dominar ferramentas e integrações que permitem à sua stack de tecnologia se comunicar, liberando dados e automações para impulsionar o crescimento. Arquitetura da Stack de GTM, Agentes de IA para Vendas, Integrações N8N e Automação, APIs & Webhooks de Receita.</p>
+        <div class="module-meta"><div class="module-meta-item"><i data-lucide="clock" style="width:14px;height:14px;"></i> 6 semanas</div><div class="module-meta-item"><i data-lucide="gift" style="width:14px;height:14px;"></i> Bônus: Biblioteca de Integrações em N8N</div><div class="module-meta-item" style="color:var(--brand-400);font-weight:600"><i data-lucide="tag" style="width:14px;height:14px;"></i> Avaliado em R$3.697</div></div>
+      </div>
+    </div>
+
+    <div class="bonuses-label fade-up">Bônus Inclusos</div>
+    <div class="modules-stack">
+      <div class="module-card fade-up" style="padding:24px 32px">
+        <div class="module-top"><span class="module-badge mod-bonus">★ Bônus 1</span><span style="font-size:0.8125rem;color:var(--gray-500)">🔴 Semanal</span></div>
+        <h3 class="module-title" style="font-size:1.0625rem;margin-top:8px">Masterclasses Semanais ao Vivo</h3>
+        <p class="module-desc" style="font-size:0.9rem">Toda semana, sessões ao vivo com os instrutores e convidados especiais para debater conceitos, analisar cenários reais e responder suas dúvidas. É uma consultoria em grupo disfarçada de curso.</p>
+        <div class="module-meta"><div class="module-meta-item" style="color:var(--brand-400);font-weight:600"><i data-lucide="tag" style="width:14px;height:14px;"></i> Avaliado em R$4.000</div></div>
+      </div>
+      <div class="module-card fade-up" style="padding:24px 32px;transition-delay:100ms">
+        <div class="module-top"><span class="module-badge mod-bonus">★ Bônus 2</span><span style="font-size:0.8125rem;color:var(--gray-500)">⚡ Acesso Imediato</span></div>
+        <h3 class="module-title" style="font-size:1.0625rem;margin-top:8px">GTM Engineer Starter Kit + Comunidade Exclusiva</h3>
+        <p class="module-desc" style="font-size:0.9rem">Acesso imediato aos templates e ferramentas mais valiosos, além do acesso à comunidade exclusiva onde você poderá se conectar com outros profissionais de GTM de alto nível.</p>
+        <div class="module-meta"><div class="module-meta-item" style="color:var(--brand-400);font-weight:600"><i data-lucide="tag" style="width:14px;height:14px;"></i> Avaliado em R$4.497</div></div>
+      </div>
+    </div>
+
+    <div style="text-align:center;margin-top:48px" class="fade-up">
+      <p style="font-size:1.25rem;color:var(--gray-400);margin-bottom:8px">Valor total entregue: <span style="text-decoration:line-through">R$20.488</span></p>
+      <p style="font-size:1.5rem;font-weight:700;color:#fff;margin-bottom:32px">Seu investimento: <span style="color:var(--brand-400)">10x R$599,99</span></p>
+      <button class="btn-primary" onclick="openModal('comprar')" style="background:var(--brand-500)">Garantir minha vaga <i data-lucide="arrow-right" style="width:18px;height:18px;"></i></button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ AUTORIDADE — GIOVANNI ════════════════════════════════ -->
+<section id="fundador">
+  <div class="container">
+    <div class="two-col">
+      <div class="fade-up" style="position:relative">
+        <div style="border-radius:20px;overflow:hidden;background:var(--gray-100);aspect-ratio:4/5;max-width:420px">
+          <img src="giovanni salvador.avif" alt="Giovanni Salvador" style="width:100%;height:100%;object-fit:cover;object-position:top" />
+        </div>
+        <!-- ATUALIZADO: Link School ao invés de SaaStr participante -->
+        <div style="position:absolute;bottom:-20px;right:20px;background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:16px 20px;box-shadow:var(--shadow-hover);max-width:220px">
+          <div style="font-size:0.6875rem;color:var(--gray-500);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px">Professor na</div>
+          <div style="font-size:0.875rem;font-weight:700;color:var(--gray-900)">Link School of Business</div>
+          <div style="font-size:0.75rem;color:var(--gray-500);margin-top:4px">Professor Chefe de Trilha</div>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:150ms">
+        <div style="margin-bottom:16px"><span class="section-badge">Desenvolvida por</span></div>
+        <h2 class="display-lg" style="margin-bottom:16px">Quem está no epicentro global do <span class="accent">GTM</span></h2>
+        <h3 class="display-sm" style="color:var(--gray-900);margin-bottom:8px">Giovanni Salvador</h3>
+        <p style="color:var(--gray-500);font-size:1rem;margin-bottom:20px">Founder & CEO, SCIENT · Professor Chefe de Trilha na Link School of Business</p>
+        <p class="text-lg" style="color:var(--gray-600);margin-bottom:32px;line-height:1.7">Referência em Go-to-Market Engineering no Brasil, Giovanni traz para a certificação os frameworks e práticas mais atuais das empresas B2B mais eficientes do mundo, com acompanhamento direto do ecossistema SaaS global.</p>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px">
+          <div style="padding:16px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-200)"><div style="font-size:1.75rem;font-weight:700;color:var(--brand-600)">500+</div><div style="font-size:0.875rem;color:var(--gray-500);margin-top:4px">Empresas formadas</div></div>
+          <div style="padding:16px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-200)"><div style="font-size:1.75rem;font-weight:700;color:var(--brand-600)">3.2x</div><div style="font-size:0.875rem;color:var(--gray-500);margin-top:4px">ROI mediano dos alunos</div></div>
+          <div style="padding:16px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-200)"><div style="font-size:1.75rem;font-weight:700;color:var(--brand-600)">+247%</div><div style="font-size:0.875rem;color:var(--gray-500);margin-top:4px">Receita incremental média</div></div>
+          <div style="padding:16px;background:var(--gray-50);border-radius:12px;border:1px solid var(--gray-200)"><div style="font-size:1.75rem;font-weight:700;color:var(--brand-600)">18sem</div><div style="font-size:0.875rem;color:var(--gray-500);margin-top:4px">Formação completa</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ INSTRUTORES ══════════════════════════════════════════ -->
+<section id="instrutores" class="alt">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-badge">Instrutores</span>
+      <h2 class="display-lg" style="margin-top:16px">Ao lado dos maiores nomes do mercado em <span class="accent">GTM</span></h2>
+      <p class="text-xl muted" style="margin-top:12px;max-width:560px;margin-left:auto;margin-right:auto">Especialistas que já construíram máquinas de receita milionárias no Brasil e no mundo.</p>
+    </div>
+    <div class="instructors-grid">
+      <div class="instructor-card fade-up"><img src="giovanni salvador.avif" alt="Giovanni Salvador" class="instructor-photo" /><div class="instructor-name">Giovanni Salvador</div><div class="instructor-role">Founder & CEO, SCIENT<br>Professor Chefe de Trilha na Link School</div></div>
+      <div class="instructor-card fade-up" style="transition-delay:75ms"><img src="mat.avif" alt="Matheus Pinheiro" class="instructor-photo" /><div class="instructor-name">Matheus Pinheiro</div><div class="instructor-role">COO & AI Product Manager<br>Professor, Empreendedor & Expert em Ferramentas de GTM</div></div>
+      <div class="instructor-card fade-up" style="transition-delay:150ms"><img src="felipe-barreiros.png" alt="Felipe Barreiros" class="instructor-photo" /><div class="instructor-name">Felipe Barreiros</div><div class="instructor-role">Technical Product Manager<br>Fundador com 3x Exits no Brasil</div></div>
+      <div class="instructor-card fade-up" style="transition-delay:225ms"><img src="Juliana-Tubino.jpg" alt="Juliana Tubino" class="instructor-photo" /><div class="instructor-name">Juliana Tubino</div><div class="instructor-role">Board Member & Advisor<br>Executiva em empresas como Microsoft e RD Station</div></div>
+      <div class="instructor-card fade-up" style="transition-delay:100ms"><img src="Edson-Rigonatti.jpg" alt="Edson Rigonatti" class="instructor-photo" /><div class="instructor-name">Edson Rigonatti</div><div class="instructor-role">Investidor e Empreendedor<br>Sócio-fundador da Astella</div></div>
+      <div class="instructor-card fade-up" style="transition-delay:175ms"><img src="Ronei-Vinagre.jpg" alt="Ronei Vinagre" class="instructor-photo" /><div class="instructor-name">Ronei Vinagre</div><div class="instructor-role">CEO GrowthNews<br>Fundador do maior evento de Growth B2B do Brasil</div></div>
+      <div class="instructor-card fade-up" style="transition-delay:250ms"><img src="gustavogadotti.png" alt="Gustavo Gadotti Duwe" class="instructor-photo" /><div class="instructor-name">Gustavo Gadotti Duwe</div><div class="instructor-role">VP of Revenue CRMBonus<br>Especialista em omnichannel & social selling</div></div>
+      <div class="instructor-card fade-up" style="transition-delay:325ms"><div class="instructor-photo-placeholder">GTM</div><div class="instructor-name">Participação Especial</div><div class="instructor-role">GTM Engineer em exercício<br>À ser anunciado em breve</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ GARANTIA ════════════════════════════════════════════ -->
+<section id="garantia">
+  <div class="container">
+    <div class="guarantee-card fade-up">
+      <div style="color:var(--success-600);margin:0 auto 20px"><i data-lucide="shield-check" style="width:56px;height:56px;"></i></div>
+      <h2 class="display-sm" style="color:var(--gray-900);margin-bottom:16px">Garantia incondicional de <span style="color:var(--success-600)">7 dias</span></h2>
+      <p style="color:var(--gray-600);font-size:1.0625rem;line-height:1.65">Se dentro dos primeiros 7 dias você sentir que a certificação não é para o seu time, devolvemos 100% do seu investimento. Sem burocracia, sem perguntas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══ PRICING ═════════════════════════════════════════════ -->
+<section id="pricing">
+  <div class="container">
+    <div class="section-header fade-up">
+      <span class="section-badge">Investimento</span>
+      <h2 class="display-lg" style="margin-top:16px">Escolha sua jornada <span class="accent">GTM</span></h2>
+      <p class="text-xl muted" style="margin-top:12px;max-width:500px;margin-left:auto;margin-right:auto">Invista no sistema que vai transformar sua carreira e operação de receita para sempre.</p>
+    </div>
+    <div class="pricing-card fade-up">
+      <div class="pricing-popular">Certificação GTM Engineer</div>
+      <div style="display:flex;align-items:baseline;gap:4px;margin-bottom:4px">
+        <div class="pricing-price"><sup>R$</sup>5.999,90</div>
+        <span style="font-size:1rem;color:var(--gray-500)">à vista</span>
+      </div>
+      <div class="pricing-installment">ou <strong style="color:var(--gray-900)">10x de R$599,99</strong> sem juros</div>
+
+      <ul class="pricing-features">
+        <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> 18 semanas de formação completa (3 módulos)</li>
+        <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Módulo 1: Business Development</li>
+        <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Módulo 2: Revenue Operations</li>
+        <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Módulo 3: Product Engineering</li>
+        <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Masterclasses semanais ao vivo</li>
+        <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> GTM Engineer Starter Kit</li>
+        <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Comunidade exclusiva de GTM Engineers</li>
+        <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Certificado SCIENT de Engenharia GTM</li>
+        <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Acesso às gravações por 12 meses</li>
+      </ul>
+
+      <div class="pricing-btns">
+        <button class="btn-primary" onclick="openModal('comprar')">
+          <i data-lucide="zap" style="width:18px;height:18px;"></i>
+          Comprar agora
+        </button>
+        <button class="btn-secondary" onclick="openModal('especialista')">
+          Quero falar com um especialista
+        </button>
+      </div>
+
+      <div class="pricing-guarantee">
+        <span><i data-lucide="shield-check" style="width:14px;height:14px;color:var(--success-500)"></i> Garantia de 7 dias</span>
+        <span><i data-lucide="lock" style="width:14px;height:14px;color:var(--gray-400)"></i> Pagamento seguro</span>
+        <span><i data-lucide="clock" style="width:14px;height:14px;color:var(--gray-400)"></i> Acesso imediato</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FAQ ══════════════════════════════════════════════════ -->
+<section id="faq">
+  <div class="container">
+    <div class="two-col" style="align-items:flex-start">
+      <div class="faq-sticky fade-up">
+        <div style="margin-bottom:16px"><span class="section-badge">FAQ</span></div>
+        <h2 class="display-lg" style="margin-bottom:16px">Perguntas <span class="accent">frequentes</span></h2>
+        <p class="text-md" style="color:var(--gray-500)">Tudo o que você precisa saber para tomar uma decisão informada sobre a Formação GTM Engineer.</p>
+        <div style="margin-top:32px">
+          <button class="btn-primary" onclick="openModal('especialista')">Ainda tem dúvidas? Fale conosco</button>
+        </div>
+      </div>
+      <div class="fade-up" style="transition-delay:100ms">
+        <div class="accordion">
+          <div class="accordion-item">
+            <button class="accordion-question" onclick="toggleAccordion(this)">Quem deve fazer a Formação GTM Engineer?<i data-lucide="chevron-down" class="accordion-chevron" style="width:20px;height:20px;"></i></button>
+            <div class="accordion-answer"><p class="accordion-answer-inner">A Formação é ideal para três perfis: (1) Líderes de marketing, vendas e customer success que precisam escalar resultados sem aumentar proporcionalmente seus times. (2) Fundadores e CEOs que querem construir um sistema de crescimento previsível para seus negócios B2B. (3) Profissionais que buscam as habilidades mais valorizadas do mercado — na interseção entre vendas, marketing e tecnologia.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-question" onclick="toggleAccordion(this)">Qual é a carga horária e o formato do curso?<i data-lucide="chevron-down" class="accordion-chevron" style="width:20px;height:20px;"></i></button>
+            <div class="accordion-answer"><p class="accordion-answer-inner">A formação dura 18 semanas, dividida em 3 módulos de 6 semanas cada. O formato combina aulas gravadas assistidas no seu ritmo, masterclasses ao vivo semanais de 90 minutos com os instrutores, e projetos práticos implementados no seu próprio negócio. A dedicação recomendada é de 6 a 8 horas por semana.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-question" onclick="toggleAccordion(this)">Preciso ter conhecimento técnico avançado?<i data-lucide="chevron-down" class="accordion-chevron" style="width:20px;height:20px;"></i></button>
+            <div class="accordion-answer"><p class="accordion-answer-inner">Não. O único pré-requisito é ter experiência prévia na área de receita (vendas, marketing, CS ou operações). Você não precisa saber programar.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-question" onclick="toggleAccordion(this)">Quando começa o próximo cohort?<i data-lucide="chevron-down" class="accordion-chevron" style="width:20px;height:20px;"></i></button>
+            <div class="accordion-answer"><p class="accordion-answer-inner">As vagas para o próximo cohort são limitadas para garantir qualidade e atenção individual. Preencha o formulário e nossa equipe entrará em contato com as datas disponíveis. As turmas costumam fechar semanas antes do início.</p></div>
+          </div>
+          <div class="accordion-item">
+            <button class="accordion-question" onclick="toggleAccordion(this)">Por quanto tempo tenho acesso ao conteúdo?<i data-lucide="chevron-down" class="accordion-chevron" style="width:20px;height:20px;"></i></button>
+            <div class="accordion-answer"><p class="accordion-answer-inner">Você terá acesso às gravações de todas as aulas por 12 meses. As masterclasses ao vivo são gravadas e disponibilizadas na plataforma em até 24 horas. O acesso à comunidade exclusiva é vitalício para todos os alunos.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ CTA FINAL ════════════════════════════════════════════ -->
+<section id="cta-final" class="dark" style="padding:80px 0">
+  <div class="container">
+    <div class="cta-final-inner fade-up">
+      <div class="cta-final-text">
+        <h2 class="display-lg">Pronto para construir sua<br><span style="color:var(--brand-400)">máquina de receita?</span></h2>
+        <p>Vagas limitadas por turma. Garanta a sua antes que esgotem.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:12px;flex-shrink:0">
+        <button class="btn-primary" onclick="openModal('comprar')" style="background:var(--brand-500);font-size:1.0625rem;padding:16px 32px">
+          Garantir minha vaga agora <i data-lucide="arrow-right" style="width:18px;height:18px;"></i>
+        </button>
+        <span style="font-size:0.8125rem;color:var(--gray-500);display:flex;align-items:center;gap:6px">
+          <i data-lucide="shield-check" style="width:14px;height:14px;color:var(--success-500)"></i>
+          Garantia incondicional de 7 dias
+        </span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ═══════════════════════════════════════════════ -->
+<footer id="footer">
+  <div class="container">
+    <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:40px">
+      <div style="max-width:280px">
+        <div style="margin-bottom:12px">
+          <img src="logo.png" alt="SCIENT" style="height:28px;width:auto;" />
+        </div>
+        <p style="font-size:0.875rem;color:var(--gray-500);line-height:1.6">Engenharia de Go-to-Market. Formando os profissionais que constroem as máquinas de receita das empresas do futuro.</p>
+      </div>
+    </div>
+    <div class="footer-divider"></div>
+    <div class="footer-copy">
+      <span>© 2023 Scient. Todos os direitos reservados.</span>
+      <span>Scient Consultoria de Gestao Empresarial LTDA</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ── URLS ──────────────────────────────────────────────────
+  const CHECKOUT_URL  = 'https://payment-link-v3.pagar.me/pl_j9RW4Mr5mYOPYVmCo5FmD8qn0Kyvdbaz';
+  const WHATSAPP_URL  = 'https://api.whatsapp.com/send/?phone=5511976738615&text&type=phone_number&app_absent=0';
+
+  // ── MODAL STATE ───────────────────────────────────────────
+  let currentModalMode = 'comprar'; // 'comprar' | 'especialista' | 'lead'
+
+  function openModal(mode) {
+    currentModalMode = mode;
+    const modal = document.getElementById('modal');
+    const title = document.getElementById('modal-title');
+    const subtitle = document.getElementById('modal-subtitle');
+    const btn = document.getElementById('modal-submit-btn');
+
+    if (mode === 'comprar') {
+      title.textContent = 'Garantir minha vaga';
+      subtitle.textContent = 'Preencha seus dados. Vamos identificar o melhor caminho para você.';
+      btn.textContent = 'Continuar →';
+    } else if (mode === 'especialista') {
+      title.textContent = 'Falar com um especialista';
+      subtitle.textContent = 'Nossa equipe entrará em contato para apresentar a certificação.';
+      btn.textContent = 'Falar com especialista →';
+    } else {
+      title.textContent = 'Inscrever meu time';
+      subtitle.textContent = 'Preencha os dados e nosso time comercial entrará em contato.';
+      btn.textContent = 'Enviar solicitação →';
+    }
+
+    // Reset form
+    document.getElementById('modal-form-wrap').innerHTML = getFormHTML();
+    lucide.createIcons();
+    applyPhoneMask();
+
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    document.getElementById('modal').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close on overlay click
+  document.getElementById('modal').addEventListener('click', function(e) {
+    if (e.target === this) closeModal();
+  });
+
+  // Close on ESC
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+  function getFormHTML() {
+    return `
+      <form id="modal-form" onsubmit="handleModalSubmit(event)">
+        <div class="form-group">
+          <label class="form-label" for="f-nome">Nome completo *</label>
+          <input class="form-input" type="text" id="f-nome" required placeholder="Seu nome completo" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-email">E-mail profissional *</label>
+          <input class="form-input" type="email" id="f-email" required placeholder="seu@email.com" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-tel">WhatsApp / Telefone *</label>
+          <input class="form-input" type="tel" id="f-tel" required placeholder="(11) 99999-9999" />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-cargo">Cargo atual *</label>
+          <div class="form-select-wrap">
+            <select class="form-select" id="f-cargo" required>
+              <option value="" disabled selected>Selecione seu cargo</option>
+              <option>RevOps / Revenue Operations</option>
+              <option>Sales Ops / Operações de Vendas</option>
+              <option>Head of Sales / Gerente de Vendas</option>
+              <option>Marketing Ops</option>
+              <option>CS / Customer Success</option>
+              <option>Growth / Crescimento</option>
+              <option>Fundador / CEO / C-Level</option>
+              <option>Analista / Coordenador</option>
+              <option>Outro</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="f-para-quem">A formação é para… *</label>
+          <div class="form-select-wrap">
+            <select class="form-select" id="f-para-quem" required>
+              <option value="" disabled selected>Selecione uma opção</option>
+              <option value="mim">Para mim (investimento pessoal)</option>
+              <option value="time">Para o meu time / empresa</option>
+            </select>
+          </div>
+        </div>
+        <button type="submit" class="form-submit" id="modal-submit-btn-inner">Continuar →</button>
+        <p class="form-disclaimer">🔒 Seus dados estão protegidos pela LGPD. Não compartilhamos com terceiros.</p>
+      </form>
+    `;
+  }
+
+  function applyPhoneMask() {
+    const tel = document.getElementById('f-tel');
+    if (!tel) return;
+    tel.addEventListener('input', function(e) {
+      let v = e.target.value.replace(/\D/g, '');
+      if (v.length > 11) v = v.slice(0, 11);
+      if (v.length > 6) v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7);
+      else if (v.length > 2) v = '(' + v.slice(0,2) + ') ' + v.slice(2);
+      else if (v.length > 0) v = '(' + v;
+      e.target.value = v;
+    });
+  }
+
+  function handleModalSubmit(e) {
+    e.preventDefault();
+    const btn = document.getElementById('modal-submit-btn-inner');
+    const paraQuem = document.getElementById('f-para-quem').value;
+
+    btn.textContent = 'Processando...';
+    btn.disabled = true;
+
+    // Simulate brief delay for UX
+    setTimeout(() => {
+      // Logic:
+      // mode === 'comprar' + paraQuem === 'mim'   → checkout (B2C)
+      // mode === 'comprar' + paraQuem === 'time'  → whatsapp (B2B)
+      // mode === 'especialista' ou 'lead'          → sempre whatsapp
+
+      if (currentModalMode === 'comprar' && paraQuem === 'mim') {
+        // B2C → checkout
+        closeModal();
+        window.open(CHECKOUT_URL, '_blank');
+      } else {
+        // B2B ou especialista → WhatsApp
+        closeModal();
+        window.open(WHATSAPP_URL, '_blank');
+      }
+    }, 800);
+  }
+
+  // ── INIT ──────────────────────────────────────────────────
+  lucide.createIcons();
+
+  // Scroll progress
+  const progress = document.getElementById('scroll-progress');
+  window.addEventListener('scroll', () => {
+    const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    progress.style.width = pct + '%';
+  }, { passive: true });
+
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  // IntersectionObserver fade-up
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
+
+  // Accordion
+  function toggleAccordion(btn) {
+    const item = btn.closest('.accordion-item');
+    const answer = item.querySelector('.accordion-answer');
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.accordion-item.open').forEach(i => {
+      i.classList.remove('open');
+      i.querySelector('.accordion-answer').style.maxHeight = '0';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      answer.style.maxHeight = answer.scrollHeight + 'px';
+    }
+  }
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth', block: 'start' }); }
+    });
+  });
+
+  // Apply phone mask on initial load
+  applyPhoneMask();
+</script>
+</body>
+</html>
