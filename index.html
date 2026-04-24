@@ -972,7 +972,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 class="display-lg" style="margin-bottom:16px">Perguntas <span class="accent">frequentes</span></h2>
         <p class="text-md" style="color:var(--gray-500)">Tudo o que você precisa saber para tomar uma decisão informada sobre a Formação GTM Engineer.</p>
         <div style="margin-top:32px">
-          <button class="btn-primary" onclick="openModal('especialista')">Ainda tem dúvidas? Fale conosco</button>
+          <button class="btn-primary" onclick="openFaqWhatsApp()">Ainda tem dúvidas? Fale conosco</button>
         </div>
       </div>
       <div class="fade-up" style="transition-delay:100ms">
@@ -1051,10 +1051,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const B2C_TYPE = 'Para mim (investimento pessoal)';
   const B2B_TYPE = 'Para o meu time / empresa';
   const WHATSAPP_NUMBER = '5511936185046';
+  const FAQ_WHATSAPP_NUMBER = '5511976738615';
   const WHATSAPP_MESSAGE = encodeURIComponent(
     'Ol\u00E1, vim atrav\u00E9s da p\u00E1gina da certifica\u00E7\u00E3o SCIENT Cohort 3 e quero saber mais sobre a forma\u00E7\u00E3o para o meu time.'
   );
   const WHATSAPP_URL = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + WHATSAPP_MESSAGE;
+  const FAQ_WHATSAPP_URL = 'https://wa.me/' + FAQ_WHATSAPP_NUMBER;
 
   // ── MODAL STATE ───────────────────────────────────────────
   let currentModalMode = 'comprar'; // 'comprar' | 'especialista' | 'lead'
@@ -1197,6 +1199,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const newWindow = window.open(WHATSAPP_URL, '_blank', 'noopener');
     if (!newWindow) {
       window.location.href = WHATSAPP_URL;
+    }
+  }
+
+  function openFaqWhatsApp() {
+    const newWindow = window.open(FAQ_WHATSAPP_URL, '_blank', 'noopener');
+    if (!newWindow) {
+      window.location.href = FAQ_WHATSAPP_URL;
     }
   }
 
