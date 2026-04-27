@@ -1008,7 +1008,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const B2B_TYPE = 'Para o meu time / empresa';
   const WHATSAPP_NUMBER = '5511936185046';
   const WHATSAPP_MESSAGE = encodeURIComponent(
-    'Ol�, vim atrav�s da p�gina da certifica��o SCIENT Cohort 3 e quero saber mais sobre a forma��o para o meu time.'
+    'Olá, vim através da página da certificação SCIENT Cohort 3 e quero saber mais sobre a formação para o meu time.'
   );
   const WHATSAPP_URL = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + WHATSAPP_MESSAGE;
 
@@ -1173,7 +1173,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     const tipo = document.getElementById('formacao-para').value;
 
     if (!nome || !email || !telefone || !cargo || !tipo) {
-      alert('Preencha todos os campos obrigat�rios.');
+      alert('Preencha todos os campos obrigatórios.');
       return;
     }
 
@@ -1217,7 +1217,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       redirectByLeadType(tipo);
     } catch (error) {
       console.error('Erro ao enviar lead:', error);
-      alert('Erro ao enviar formul�rio. Verifique sua conex�o e tente novamente.');
+      alert('Erro ao enviar formulário. Verifique sua conexão e tente novamente.');
       btn.textContent = getModalSubmitText(currentModalMode);
       btn.disabled = false;
     }
