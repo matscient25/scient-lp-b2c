@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
   <!-- Google Tag Manager -->
@@ -86,25 +86,7 @@
     .nav-links{display:flex;align-items:center;gap:32px}
     .nav-links a{font-size:0.9375rem;color:var(--gray-600);font-weight:500;transition:color var(--t)}
     .nav-links a:hover{color:var(--gray-900)}
-    @media(max-width:768px){
-      .nav-links{display:none}
-      #navbar{height:auto;padding:14px 0}
-      .nav-inner{height:auto;gap:12px}
-      .nav-logo{flex:1 1 auto;min-width:0}
-      .nav-logo img{height:24px;max-width:100%}
-      #navbar .btn-primary{
-        flex:0 0 auto;
-        min-width:0;
-        max-width:172px;
-        padding:10px 16px !important;
-        font-size:0.875rem !important;
-        line-height:1.15;
-        gap:6px;
-        justify-content:center;
-        white-space:nowrap;
-      }
-      #navbar .btn-primary i{width:14px !important;height:14px !important}
-    }
+    @media(max-width:768px){.nav-links{display:none}}
 
     /* ── HERO ── */
     #hero{padding:80px 0 96px;background:#fff}
@@ -160,12 +142,6 @@
     .trust-logo--webflow{--logo-scale:1.2}
     .trust-logo--lovable{--logo-scale:0.82}
     .trust-logo--hubspot{--logo-scale:1.2}
-    @media(max-width:768px){
-      #trust{padding:52px 0 28px}
-      .trust-label{font-size:0.75rem;line-height:1.45;max-width:320px;margin:0 auto 24px;padding-top:6px}
-      .trust-logos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 18px}
-      .trust-logo{width:100%;height:22px;flex:initial}
-    }
 
     /* ── TWO COL ── */
     .two-col{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
@@ -179,26 +155,6 @@
     .gtm-node{position:absolute;display:flex;flex-direction:column;align-items:center;gap:6px}
     .gtm-node-icon{width:52px;height:52px;border-radius:12px;border:1px solid var(--gray-200);background:#fff;box-shadow:var(--shadow-card);display:flex;align-items:center;justify-content:center;color:var(--brand-600)}
     .gtm-node-label{font-size:0.6875rem;font-weight:600;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.06em}
-    @media(max-width:768px){
-      .gtm-diagram{width:min(100%,340px);height:332px;margin:0 auto}
-      .gtm-center-badge{width:88px;height:88px;box-shadow:0 0 0 10px var(--brand-100),0 0 0 20px var(--brand-50)}
-      .gtm-center-badge span{font-size:0.9rem}
-      .gtm-node{gap:8px}
-      .gtm-node-icon{width:44px;height:44px}
-      .gtm-node-icon i{width:20px !important;height:20px !important}
-      .gtm-node-label{
-        max-width:106px;
-        font-size:0.6rem;
-        line-height:1.25;
-        letter-spacing:0.04em;
-        text-align:center;
-        white-space:normal;
-      }
-      .gtm-diagram > .gtm-node:nth-child(2){top:0 !important}
-      .gtm-diagram > .gtm-node:nth-child(3){right:0 !important}
-      .gtm-diagram > .gtm-node:nth-child(4){bottom:0 !important}
-      .gtm-diagram > .gtm-node:nth-child(5){left:0 !important}
-    }
 
     /* ── QUOTE ── */
     #quote{padding:80px 0}
@@ -423,21 +379,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div id="modal-form-wrap">
       <form id="modal-form" onsubmit="handleModalSubmit(event)">
         <div class="form-group">
-          <label class="form-label" for="f-nome">Nome completo *</label>
-          <input class="form-input" type="text" id="f-nome" required placeholder="Seu nome completo" />
+          <label class="form-label" for="nome">Nome completo *</label>
+          <input class="form-input" type="text" id="nome" required placeholder="Seu nome completo" />
         </div>
         <div class="form-group">
-          <label class="form-label" for="f-email">E-mail profissional *</label>
-          <input class="form-input" type="email" id="f-email" required placeholder="seu@email.com" />
+          <label class="form-label" for="email">E-mail profissional *</label>
+          <input class="form-input" type="email" id="email" required placeholder="seu@email.com" />
         </div>
         <div class="form-group">
-          <label class="form-label" for="f-tel">WhatsApp / Telefone *</label>
-          <input class="form-input" type="tel" id="f-tel" required placeholder="(11) 99999-9999" />
+          <label class="form-label" for="telefone">WhatsApp / Telefone *</label>
+          <input class="form-input" type="tel" id="telefone" required placeholder="(11) 99999-9999" />
         </div>
         <div class="form-group">
-          <label class="form-label" for="f-cargo">Cargo atual *</label>
+          <label class="form-label" for="cargo">Cargo atual *</label>
           <div class="form-select-wrap">
-            <select class="form-select" id="f-cargo" required>
+            <select class="form-select" id="cargo" required>
               <option value="" disabled selected>Selecione seu cargo</option>
               <option>RevOps / Revenue Operations</option>
               <option>Sales Ops / Operações de Vendas</option>
@@ -452,9 +408,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label" for="f-para-quem">A formação é para… *</label>
+          <label class="form-label" for="formacao-para">A formação é para… *</label>
           <div class="form-select-wrap">
-            <select class="form-select" id="f-para-quem" required>
+            <select class="form-select" id="formacao-para" required>
               <option value="" disabled selected>Selecione uma opção</option>
               <option value="Para mim (investimento pessoal)">Para mim (investimento pessoal)</option>
               <option value="Para o meu time / empresa">Para o meu time / empresa</option>
@@ -625,7 +581,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="quote-marks">"</div>
       <p class="quote-text">GTM Engineer constrói os sistemas que transformam sinais de intenção de compra em receita. Conectam ferramentas de marketing, vendas e customer success, automatizam tarefas repetitivas e utiliza IA para conduzir times a absorverem ganhos massivos de produtividade</p>
       <div class="quote-author">
-        <div class="quote-avatar"><img src="Fotos/Giovanni Salvador.png" alt="Giovanni Salvador" /></div>
+        <div class="quote-avatar"><img src="Fotos/Giovanni Salvador.jpg" alt="Giovanni Salvador" /></div>
         <div><div class="quote-name">Giovanni Salvador</div><div class="quote-role">Fundador & CEO, Scient</div></div>
       </div>
     </div>
@@ -857,7 +813,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <div class="two-col">
       <div class="fade-up" style="position:relative">
         <div style="border-radius:20px;overflow:hidden;background:var(--gray-100);aspect-ratio:4/5;max-width:420px">
-          <img src="Fotos/Giovanni Salvador.png" alt="Giovanni Salvador" style="width:100%;height:100%;object-fit:cover;object-position:top" />
+          <img src="Fotos/Giovanni Salvador.jpg" alt="Giovanni Salvador" style="width:100%;height:100%;object-fit:cover;object-position:top" />
         </div>
         <!-- ATUALIZADO: Link School ao invés de SaaStr participante -->
         <div style="position:absolute;bottom:-20px;right:20px;background:#fff;border:1px solid var(--gray-200);border-radius:12px;padding:16px 20px;box-shadow:var(--shadow-hover);max-width:220px">
@@ -892,11 +848,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <p class="text-xl muted" style="margin-top:12px;max-width:640px;margin-left:auto;margin-right:auto">Operadores, founders e investidores que ajudam a traduzir o que está funcionando agora no ecossistema de GTM e tecnologia.</p>
     </div>
     <div class="instructors-grid">
-      <div class="instructor-card instructor-card--giovanni fade-up"><img src="Fotos/Giovanni Salvador.png" alt="Giovanni Salvador" class="instructor-photo" /><div class="instructor-name">Giovanni Salvador</div><div class="instructor-role">Founder & CEO, SCIENT<br>Professor Chefe de Trilha na Link School</div></div>
-      <div class="instructor-card instructor-card--matheus fade-up" style="transition-delay:75ms"><img src="Fotos/Matheus Pinheiro.png" alt="Matheus Pinheiro" class="instructor-photo" /><div class="instructor-name">Matheus Pinheiro</div><div class="instructor-role">COO & AI Product Manager<br>Professor, Empreendedor & Expert em Ferramentas de GTM</div></div>
-      <div class="instructor-card instructor-card--felipe fade-up" style="transition-delay:150ms"><img src="Fotos/felipe-barreiros.png" alt="Felipe Barreiros" class="instructor-photo" /><div class="instructor-name">Felipe Barreiros</div><div class="instructor-role">Technical Product Manager<br>Fundador com 3x Exits no Brasil</div></div>
-      <div class="instructor-card instructor-card--edson fade-up" style="transition-delay:225ms"><img src="Fotos/Edson Rigonatti.png" alt="Edson Rigonatti" class="instructor-photo" /><div class="instructor-name">Edson Rigonatti</div><div class="instructor-role">GENERAL PARTNER · ASTELLA INVESTIMENTOS<br>Um dos maiores VCs early-stage do Brasil, investiu em empresas como Omie, RD Station e outras referências de SaaS e GTM.</div></div>
-      <div class="instructor-card instructor-card--bruno fade-up" style="transition-delay:300ms"><img src="Fotos/Bruno Okamoto.png" alt="Bruno Okamoto" class="instructor-photo" /><div class="instructor-name">Bruno Okamoto</div><div class="instructor-role">FUNDADOR · PIX EDUCAÇÃO<br>Empreendedor digital e referência em OpenClaw no Brasil. Criador de conteúdo com +100k seguidores no YouTube; seu curso de OpenClaw fez R$2M em 45 dias e onboardou 10 mil alunos.</div></div>
+      <div class="instructor-card instructor-card--giovanni fade-up"><img src="Fotos/Giovanni Salvador.jpg" alt="Giovanni Salvador" class="instructor-photo" /><div class="instructor-name">Giovanni Salvador</div><div class="instructor-role">Founder & CEO, SCIENT<br>Professor Chefe de Trilha na Link School</div></div>
+      <div class="instructor-card instructor-card--matheus fade-up" style="transition-delay:75ms"><img src="Fotos/Matheus Pinheiro.jpg" alt="Matheus Pinheiro" class="instructor-photo" /><div class="instructor-name">Matheus Pinheiro</div><div class="instructor-role">COO & AI Product Manager<br>Professor, Empreendedor & Expert em Ferramentas de GTM</div></div>
+      <div class="instructor-card instructor-card--felipe fade-up" style="transition-delay:150ms"><img src="Fotos/felipe-barreiros.jpg" alt="Felipe Barreiros" class="instructor-photo" /><div class="instructor-name">Felipe Barreiros</div><div class="instructor-role">Technical Product Manager<br>Fundador com 3x Exits no Brasil</div></div>
+      <div class="instructor-card instructor-card--edson fade-up" style="transition-delay:225ms"><img src="Fotos/Edson Rigonatti.jpg" alt="Edson Rigonatti" class="instructor-photo" /><div class="instructor-name">Edson Rigonatti</div><div class="instructor-role">GENERAL PARTNER · ASTELLA INVESTIMENTOS<br>Um dos maiores VCs early-stage do Brasil, investiu em empresas como Omie, RD Station e outras referências de SaaS e GTM.</div></div>
+      <div class="instructor-card instructor-card--bruno fade-up" style="transition-delay:300ms"><img src="Fotos/Bruno Okamoto.jpg" alt="Bruno Okamoto" class="instructor-photo" /><div class="instructor-name">Bruno Okamoto</div><div class="instructor-role">FUNDADOR · PIX EDUCAÇÃO<br>Empreendedor digital e referência em OpenClaw no Brasil. Criador de conteúdo com +100k seguidores no YouTube; seu curso de OpenClaw fez R$2M em 45 dias e onboardou 10 mil alunos.</div></div>
       <div class="instructors-note fade-up" style="transition-delay:375ms">
         <div class="overline" style="color:var(--brand-700);margin-bottom:12px;">Convidados Especiais</div>
         <p class="text-md body-text">A Certificação conta com masterclasses bônus de nomes a serem anunciados ao longo da formação: fundadores, operadores e investidores do ecossistema brasileiro de GTM e tecnologia.</p>
@@ -941,7 +897,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> GTM Engineer Starter Kit</li>
         <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Comunidade no Circle</li>
         <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Certificado SCIENT de Engenharia GTM</li>
-        <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Acesso de 12 meses após a conclusão da turma.</li>
+        <li><i data-lucide="check-circle-2" style="width:18px;height:18px;"></i> Acesso vitalício às gravações</li>
       </ul>
 
       <div class="pricing-btns">
@@ -972,7 +928,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <h2 class="display-lg" style="margin-bottom:16px">Perguntas <span class="accent">frequentes</span></h2>
         <p class="text-md" style="color:var(--gray-500)">Tudo o que você precisa saber para tomar uma decisão informada sobre a Formação GTM Engineer.</p>
         <div style="margin-top:32px">
-          <button class="btn-primary" onclick="openFaqWhatsApp()">Ainda tem dúvidas? Fale conosco</button>
+          <button class="btn-primary" onclick="openModal('especialista')">Ainda tem dúvidas? Fale conosco</button>
         </div>
       </div>
       <div class="fade-up" style="transition-delay:100ms">
@@ -1051,12 +1007,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   const B2C_TYPE = 'Para mim (investimento pessoal)';
   const B2B_TYPE = 'Para o meu time / empresa';
   const WHATSAPP_NUMBER = '5511936185046';
-  const FAQ_WHATSAPP_NUMBER = '5511976738615';
   const WHATSAPP_MESSAGE = encodeURIComponent(
-    'Ol\u00E1, vim atrav\u00E9s da p\u00E1gina da certifica\u00E7\u00E3o SCIENT Cohort 3 e quero saber mais sobre a forma\u00E7\u00E3o para o meu time.'
+    'Ol�, vim atrav�s da p�gina da certifica��o SCIENT Cohort 3 e quero saber mais sobre a forma��o para o meu time.'
   );
   const WHATSAPP_URL = 'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + WHATSAPP_MESSAGE;
-  const FAQ_WHATSAPP_URL = 'https://wa.me/' + FAQ_WHATSAPP_NUMBER;
 
   // ── MODAL STATE ───────────────────────────────────────────
   let currentModalMode = 'comprar'; // 'comprar' | 'especialista' | 'lead'
@@ -1111,21 +1065,21 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     return `
       <form id="modal-form" onsubmit="handleModalSubmit(event)">
         <div class="form-group">
-          <label class="form-label" for="f-nome">Nome completo *</label>
-          <input class="form-input" type="text" id="f-nome" required placeholder="Seu nome completo" />
+          <label class="form-label" for="nome">Nome completo *</label>
+          <input class="form-input" type="text" id="nome" required placeholder="Seu nome completo" />
         </div>
         <div class="form-group">
-          <label class="form-label" for="f-email">E-mail profissional *</label>
-          <input class="form-input" type="email" id="f-email" required placeholder="seu@email.com" />
+          <label class="form-label" for="email">E-mail profissional *</label>
+          <input class="form-input" type="email" id="email" required placeholder="seu@email.com" />
         </div>
         <div class="form-group">
-          <label class="form-label" for="f-tel">WhatsApp / Telefone *</label>
-          <input class="form-input" type="tel" id="f-tel" required placeholder="(11) 99999-9999" />
+          <label class="form-label" for="telefone">WhatsApp / Telefone *</label>
+          <input class="form-input" type="tel" id="telefone" required placeholder="(11) 99999-9999" />
         </div>
         <div class="form-group">
-          <label class="form-label" for="f-cargo">Cargo atual *</label>
+          <label class="form-label" for="cargo">Cargo atual *</label>
           <div class="form-select-wrap">
-            <select class="form-select" id="f-cargo" required>
+            <select class="form-select" id="cargo" required>
               <option value="" disabled selected>Selecione seu cargo</option>
               <option>RevOps / Revenue Operations</option>
               <option>Sales Ops / Operações de Vendas</option>
@@ -1140,9 +1094,9 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
           </div>
         </div>
         <div class="form-group">
-          <label class="form-label" for="f-para-quem">A formação é para… *</label>
+          <label class="form-label" for="formacao-para">A formação é para… *</label>
           <div class="form-select-wrap">
-            <select class="form-select" id="f-para-quem" required>
+            <select class="form-select" id="formacao-para" required>
               <option value="" disabled selected>Selecione uma opção</option>
               <option value="${B2C_TYPE}">${B2C_TYPE}</option>
               <option value="${B2B_TYPE}">${B2B_TYPE}</option>
@@ -1156,7 +1110,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   }
 
   function applyPhoneMask() {
-    const tel = document.getElementById('f-tel');
+    const tel = document.getElementById('telefone');
     if (!tel) return;
     tel.addEventListener('input', function(e) {
       let v = e.target.value.replace(/\D/g, '');
@@ -1202,29 +1156,34 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     }
   }
 
-  function openFaqWhatsApp() {
-    const newWindow = window.open(FAQ_WHATSAPP_URL, '_blank', 'noopener');
-    if (!newWindow) {
-      window.location.href = FAQ_WHATSAPP_URL;
-    }
+  function getCookie(name) {
+    var match = document.cookie.match(
+      new RegExp('(^| )' + name + '=([^;]+)')
+    );
+    return match ? decodeURIComponent(match[2]) : '';
   }
 
   async function handleModalSubmit(e) {
     e.preventDefault();
     const btn = document.getElementById('modal-submit-btn');
-    const nome = document.getElementById('f-nome').value.trim();
-    const email = document.getElementById('f-email').value.trim().toLowerCase();
-    const telefone = document.getElementById('f-tel').value.trim();
-    const cargo = document.getElementById('f-cargo').value;
-    const tipo = document.getElementById('f-para-quem').value;
+    const nome = document.getElementById('nome').value.trim();
+    const email = document.getElementById('email').value.trim().toLowerCase();
+    const telefone = document.getElementById('telefone').value.trim();
+    const cargo = document.getElementById('cargo').value;
+    const tipo = document.getElementById('formacao-para').value;
 
     if (!nome || !email || !telefone || !cargo || !tipo) {
-      alert('Preencha todos os campos obrigat?rios.');
+      alert('Preencha todos os campos obrigat�rios.');
       return;
     }
 
     btn.textContent = 'Processando...';
     btn.disabled = true;
+
+    var eventId = 'lead_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+    if (typeof fbq === 'function') {
+      fbq('track', 'Lead', {}, { eventID: eventId });
+    }
 
     const utms = getUTMParams();
     const payload = {
@@ -1234,7 +1193,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       cargo,
       tipo,
       pagina: PAGE_NAME,
-      ...utms
+      ...utms,
+      fbp: getCookie('_fbp'),
+      fbc: getCookie('_fbc'),
+      event_id: eventId
     };
 
     try {
@@ -1255,7 +1217,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       redirectByLeadType(tipo);
     } catch (error) {
       console.error('Erro ao enviar lead:', error);
-      alert('Erro ao enviar formul?rio. Verifique sua conex?o e tente novamente.');
+      alert('Erro ao enviar formul�rio. Verifique sua conex�o e tente novamente.');
       btn.textContent = getModalSubmitText(currentModalMode);
       btn.disabled = false;
     }
