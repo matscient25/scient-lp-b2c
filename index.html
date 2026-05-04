@@ -154,7 +154,19 @@
     .gtm-center-badge span{font-size:1rem;font-weight:700}
     .gtm-node{position:absolute;display:flex;flex-direction:column;align-items:center;gap:6px}
     .gtm-node-icon{width:52px;height:52px;border-radius:12px;border:1px solid var(--gray-200);background:#fff;box-shadow:var(--shadow-card);display:flex;align-items:center;justify-content:center;color:var(--brand-600)}
-    .gtm-node-label{font-size:0.6875rem;font-weight:600;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.06em}
+    .gtm-node-label{font-size:0.6875rem;font-weight:600;color:var(--gray-600);text-transform:uppercase;letter-spacing:0.06em;text-align:center;line-height:1.35;max-width:120px;white-space:normal}
+    @media(max-width:768px){
+      .gtm-diagram{height:360px;margin-top:12px}
+      .gtm-center-badge{width:96px;height:96px;box-shadow:0 0 0 10px var(--brand-100),0 0 0 20px var(--brand-50)}
+      .gtm-center-badge span{font-size:0.875rem}
+      .gtm-node{gap:8px}
+      .gtm-node-icon{width:48px;height:48px}
+      .gtm-node-label{font-size:0.58rem;letter-spacing:0.04em;max-width:92px}
+      .gtm-node--top{top:4px !important}
+      .gtm-node--right{top:43% !important;right:8px !important}
+      .gtm-node--bottom{bottom:4px !important}
+      .gtm-node--left{top:43% !important;left:8px !important}
+    }
 
     /* ── QUOTE ── */
     #quote{padding:80px 0}
@@ -557,10 +569,10 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="fade-up" style="transition-delay:150ms">
         <div class="gtm-diagram">
           <div style="position:absolute;z-index:2;text-align:center"><div class="gtm-center-badge"><span style="font-size:0.9rem;line-height:1.1">GTM Engineer</span></div></div>
-          <div class="gtm-node" style="top:20px;left:50%;transform:translateX(-50%)"><div class="gtm-node-icon"><i data-lucide="bar-chart-2" style="width:22px;height:22px;"></i></div><div class="gtm-node-label">RevOps</div></div>
-          <div class="gtm-node" style="top:50%;right:20px;transform:translateY(-50%)"><div class="gtm-node-icon"><i data-lucide="cpu" style="width:22px;height:22px;"></i></div><div class="gtm-node-label">Product Engineering</div></div>
-          <div class="gtm-node" style="bottom:20px;left:50%;transform:translateX(-50%)"><div class="gtm-node-icon"><i data-lucide="users" style="width:22px;height:22px;"></i></div><div class="gtm-node-label">Customer Success</div></div>
-          <div class="gtm-node" style="top:50%;left:20px;transform:translateY(-50%)"><div class="gtm-node-icon"><i data-lucide="briefcase" style="width:22px;height:22px;"></i></div><div class="gtm-node-label">Marketing &amp; Vendas</div></div>
+          <div class="gtm-node gtm-node--top" style="top:20px;left:50%;transform:translateX(-50%)"><div class="gtm-node-icon"><i data-lucide="bar-chart-2" style="width:22px;height:22px;"></i></div><div class="gtm-node-label">RevOps</div></div>
+          <div class="gtm-node gtm-node--right" style="top:50%;right:20px;transform:translateY(-50%)"><div class="gtm-node-icon"><i data-lucide="cpu" style="width:22px;height:22px;"></i></div><div class="gtm-node-label">Product Engineering</div></div>
+          <div class="gtm-node gtm-node--bottom" style="bottom:20px;left:50%;transform:translateX(-50%)"><div class="gtm-node-icon"><i data-lucide="users" style="width:22px;height:22px;"></i></div><div class="gtm-node-label">Customer Success</div></div>
+          <div class="gtm-node gtm-node--left" style="top:50%;left:20px;transform:translateY(-50%)"><div class="gtm-node-icon"><i data-lucide="briefcase" style="width:22px;height:22px;"></i></div><div class="gtm-node-label">Marketing &amp; Vendas</div></div>
           <svg style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none" xmlns="http://www.w3.org/2000/svg">
             <line x1="50%" y1="15%" x2="50%" y2="42%" stroke="var(--brand-200)" stroke-width="1.5" stroke-dasharray="4 4"/>
             <line x1="85%" y1="50%" x2="58%" y2="50%" stroke="var(--brand-200)" stroke-width="1.5" stroke-dasharray="4 4"/>
